@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jonas Corporation | Robótica, Sensores e IoT</title>
+<meta name="description" content="Portal técnico que unifica os trabalhos de Internet das Coisas: robôs industriais, sensores IoT, Arduino, projetos de automação e quiz.">
+<meta name="theme-color" content="#101728">
+<link rel="icon" href="img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/estilo.css">
+<!-- marca que o JavaScript está ativo (usado nas animações de entrada) -->
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body data-pagina="home">
+
+<a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- ===== CABEÇALHO: logotipo + menu em abas ===== -->
+<header class="topo">
+  <div class="container topo-interno">
+    <a class="marca" href="index.html" aria-label="Jonas Corporation — página inicial"><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20 5 34 13 20 21 6 13Z" fill="#38b6ff"/><path d="M6 17.5 20 25.5 34 17.5V24L20 32 6 24Z" fill="#9340ff"/></svg><span>Jonas Corporation</span></a>
+    <button class="botao-menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span></button>
+    <nav class="menu" id="menu-principal" aria-label="Navegação principal">
+      <a href="index.html" data-pagina="home">Home</a>
+      <a href="html/robos.html" data-pagina="robos">Robôs</a>
+      <a href="html/sensores.html" data-pagina="sensores">Sensores</a>
+      <a href="html/arduino.html" data-pagina="arduino">Arduino</a>
+      <a href="html/projetos.html" data-pagina="projetos">Projetos</a>
+      <a href="html/quiz.html" data-pagina="quiz">QUIZ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ===== HERÓI: título + imagem sobre o blob azul (1ª dobra do modelo) ===== -->
+<section class="heroi">
+  <div class="container heroi-grade">
+    <div class="revelar">
+      <span class="etiqueta">Avaliação Prática &middot; Internet das Coisas</span>
+      <h1>Robótica, sensores e Arduino na Indústria 4.0</h1>
+      <p class="heroi-texto">Um portal técnico que reúne o catálogo de robôs industriais, o catálogo de sensores IoT, a programação com Arduino e três projetos de automação simulados no Tinkercad &mdash; e termina com um quiz para testar o que você aprendeu.</p>
+      <div class="grupo-botoes">
+        <a class="botao" href="#explorar">Explorar o conteúdo</a>
+        <a class="botao botao-contorno" href="html/quiz.html">Fazer o quiz</a>
+      </div>
+    </div>
+    <figure class="figura-blob figura-blob--azul figura-blob--brilho heroi-figura revelar">
+      <img src="img/robos/articulado.jpg" alt="Linha de montagem automotiva com robôs articulados industriais">
+    </figure>
+  </div>
+</section>
+
+<!-- ===== BLOCO CENTRAL com o grande blob anil (2ª dobra do modelo) ===== -->
+<section class="secao secao--compacta">
+  <div class="container">
+    <div class="bloco-blob revelar">
+      <h2>Três trabalhos, um só portal.</h2>
+      <p>Este site unifica as avaliações práticas da unidade curricular de Internet das Coisas: o portal de robôs industriais, o catálogo técnico de sensores e os sistemas de automação inteligente com Arduino. Cada parte mantém o conteúdo original e pode ser acessada pelas abas no topo da página.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LINHAS ALTERNADAS: uma para cada parte do conteúdo ===== -->
+<section class="secao" id="explorar">
+  <div class="container">
+
+    <div class="linha revelar">
+      <div class="linha-texto linha-texto--centro">
+        <h2 class="titulo-roxo">Robôs Industriais</h2>
+        <p>Sete topologias &mdash; Cartesiano, SCARA, Articulado, Cilíndrico, Delta, Polar e Colaborativo &mdash; com princípio de funcionamento, características técnicas, aplicações industriais, integração com IoT e três modelos comerciais de fabricantes distintos.</p>
+        <p>Inclui os conceitos de IoT e robótica industrial e uma tabela comparativa entre as topologias.</p>
+        <div class="grupo-botoes"><a class="botao" href="html/robos.html">Ver os robôs</a></div>
+      </div>
+      <figure class="figura-blob figura-blob--ciano">
+        <img class="contem" src="img/robos/cobot.jpg" alt="Robô colaborativo sobre bancada com painel de programação" loading="lazy">
+      </figure>
+    </div>
+
+    <div class="linha linha--invertida revelar">
+      <div class="linha-texto linha-texto--centro">
+        <h2 class="titulo-roxo">Sensores IoT e Industriais</h2>
+        <p>Vinte e cinco sensores catalogados, de temperatura a RFID. Cada ficha traz conceito, princípio de funcionamento, especificações, tipo de sinal, aplicações, exemplo de projeto e fabricantes.</p>
+        <p>Use a busca e os filtros por categoria para encontrar o sensor certo.</p>
+        <div class="grupo-botoes"><a class="botao" href="html/sensores.html">Ver os sensores</a></div>
+      </div>
+      <figure class="figura-blob figura-blob--medio">
+        <img class="contem" src="img/sensores/hc-sr04.jpg" alt="Sensor ultrassônico HC-SR04" loading="lazy">
+      </figure>
+    </div>
+
+    <div class="linha revelar">
+      <div class="linha-texto linha-texto--centro">
+        <h2 class="titulo-roxo">Arduino na prática</h2>
+        <p>Características da plataforma, comparação entre Arduino Uno e ESP32, boas práticas de firmware e treze exemplos de programação comentados, prontos para copiar.</p>
+        <div class="grupo-botoes"><a class="botao" href="html/arduino.html">Ver o Arduino</a></div>
+      </div>
+      <figure class="figura-blob figura-blob--roxo">
+        <img class="contem" src="img/sensores/arduino-uno.jpg" alt="Placa Arduino Uno" loading="lazy">
+      </figure>
+    </div>
+
+    <div class="linha linha--invertida revelar">
+      <div class="linha-texto linha-texto--centro">
+        <h2 class="titulo-roxo">Projetos de automação</h2>
+        <p>Iluminação, estacionamento e estufa inteligentes montados no Tinkercad: componentes, ligações, regras de funcionamento, código do Arduino e quadro de testes &mdash; além dos vídeos com o Arduino físico montado em sala de aula.</p>
+        <div class="grupo-botoes"><a class="botao" href="html/projetos.html">Ver os projetos</a></div>
+      </div>
+      <figure class="figura-blob figura-blob--ciano">
+        <img class="contem" src="img/sensores/pir.jpg" alt="Sensor de presença PIR" loading="lazy">
+      </figure>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== NÚMEROS DO PORTAL ===== -->
+<section class="secao secao--compacta">
+  <div class="container">
+    <div class="numeros revelar">
+      <div class="numero"><strong>7</strong><span>topologias de robôs</span></div>
+      <div class="numero"><strong>21</strong><span>modelos comerciais</span></div>
+      <div class="numero"><strong>25</strong><span>sensores catalogados</span></div>
+      <div class="numero"><strong>13</strong><span>exemplos de código</span></div>
+      <div class="numero"><strong>3</strong><span>projetos no Tinkercad</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONCEITOS-CHAVE (resumo das páginas iniciais dos dois trabalhos) ===== -->
+<section class="secao">
+  <div class="container">
+    <div class="secao-titulo secao-titulo--centro revelar">
+      <span class="etiqueta">Conceitos-chave</span>
+      <h2>Como tudo se conecta</h2>
+      <p>Robôs, sensores e microcontroladores fazem parte da mesma cadeia: medir, comunicar, decidir e agir.</p>
+    </div>
+    <div class="grade grade-4">
+      <div class="cartao-conceito revelar">
+        <h3>Internet das Coisas</h3>
+        <p>Objetos físicos com sensores, processamento e comunicação que trocam dados entre si e com sistemas de informação sem intervenção humana a cada transação.</p>
+      </div>
+      <div class="cartao-conceito revelar">
+        <h3>Robótica industrial</h3>
+        <p>Pela ISO 8373, um manipulador multifuncional reprogramável, controlado automaticamente e programável em três ou mais eixos.</p>
+      </div>
+      <div class="cartao-conceito revelar">
+        <h3>Sensoriamento</h3>
+        <p>Converte grandezas físicas como temperatura, distância e corrente em sinais elétricos que o controlador consegue ler e usar.</p>
+      </div>
+      <div class="cartao-conceito revelar">
+        <h3>Automação</h3>
+        <p>Usa as leituras dos sensores para decidir e atuar sozinha, com mais produtividade, qualidade, segurança e rastreabilidade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHAMADA PARA O QUIZ ===== -->
+<section class="secao secao--compacta">
+  <div class="container">
+    <div class="chamada revelar">
+      <div>
+        <h2>Pronto para testar o que aprendeu?</h2>
+        <p>Dez questões no estilo SAEP/ENEM sobre robótica, sensores, eletrônica e programação, com correção comentada de cada resposta.</p>
+      </div>
+      <a class="botao" href="html/quiz.html">Começar o quiz</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== RODAPÉ: cartão em degradê "Fale conosco" (igual ao modelo) ===== -->
+<footer class="rodape">
+  <div class="container">
+    <div class="rodape-cartao">
+      <a class="rodape-marca" href="index.html"><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20 5 34 13 20 21 6 13Z" fill="#38b6ff"/><path d="M6 17.5 20 25.5 34 17.5V24L20 32 6 24Z" fill="#9340ff"/></svg><span>Jonas Corporation</span></a>
+      <div class="rodape-contato">
+        <h2>Fale conosco:</h2>
+        <p><a href="tel:+5547996698110">(47) 99669-8110</a></p>
+        <p>Rua Ronaldinho Pereira, 67, Distrito J</p>
+        <p><a href="mailto:JonasCorp@gmail.com.br">JonasCorp@gmail.com.br</a></p>
+        <div class="rodape-icones">
+          <a href="tel:+5547996698110" aria-label="Ligar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a>
+          <a href="mailto:JonasCorp@gmail.com.br" aria-label="Enviar e-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          <button type="button" class="voltar-topo" aria-label="Voltar ao topo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <p class="rodape-base">Curso Técnico em Desenvolvimento de Sistemas &middot; Internet das Coisas &middot; Docente José Ricardo Maçaneiro &middot; SENAI/SC &middot; <span data-ano>2026</span></p>
+  </div>
+</footer>
+
+<script src="js/nucleo.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arduino | Jonas Corporation</title>
+<meta name="description" content="Características do Arduino, comparação com o ESP32, boas práticas de firmware e 13 exemplos de programação com sensores.">
+<meta name="theme-color" content="#101728">
+<link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/estilo.css">
+<link rel="stylesheet" href="../css/conteudo.css">
+<!-- marca que o JavaScript está ativo (usado nas animações de entrada) -->
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body data-pagina="arduino" data-raiz="../">
+
+<a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- ===== CABEÇALHO: logotipo + menu em abas ===== -->
+<header class="topo">
+  <div class="container topo-interno">
+    <a class="marca" href="../index.html" aria-label="Jonas Corporation — página inicial"><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20 5 34 13 20 21 6 13Z" fill="#38b6ff"/><path d="M6 17.5 20 25.5 34 17.5V24L20 32 6 24Z" fill="#9340ff"/></svg><span>Jonas Corporation</span></a>
+    <button class="botao-menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span></button>
+    <nav class="menu" id="menu-principal" aria-label="Navegação principal">
+      <a href="../index.html" data-pagina="home">Home</a>
+      <a href="robos.html" data-pagina="robos">Robôs</a>
+      <a href="sensores.html" data-pagina="sensores">Sensores</a>
+      <a href="arduino.html" data-pagina="arduino">Arduino</a>
+      <a href="projetos.html" data-pagina="projetos">Projetos</a>
+      <a href="quiz.html" data-pagina="quiz">QUIZ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ===== HERÓI ===== -->
+<section class="heroi heroi--interno">
+  <div class="container heroi-grade">
+    <div class="revelar">
+      <span class="etiqueta">Plataforma de prototipagem</span>
+      <h1>Arduino na prática</h1>
+      <p class="heroi-texto">Características de hardware, modelo de execução do firmware, boas práticas e <span id="total-exemplos">13</span> exemplos de programação aplicados aos sensores do catálogo.</p>
+      <div class="grupo-botoes">
+        <a class="botao" href="#exemplos">Ver os exemplos de código</a>
+        <a class="botao botao-contorno" href="projetos.html">Projetos no Tinkercad</a>
+      </div>
+      <nav class="atalhos" aria-label="Partes desta página">
+        <a href="#caracteristicas">Características</a>
+        <a href="#firmware">Funcionamento e boas práticas</a>
+        <a href="#exemplos">Exemplos de programação</a>
+      </nav>
+    </div>
+    <figure class="figura-blob figura-blob--roxo figura-blob--brilho heroi-figura revelar">
+      <img class="contem" src="../img/sensores/arduino-uno.jpg" alt="Placa Arduino Uno">
+    </figure>
+  </div>
+</section>
+
+<!-- ===== CARACTERÍSTICAS DA PLATAFORMA ===== -->
+<section class="secao" id="caracteristicas">
+  <div class="container">
+    <div class="secao-titulo revelar">
+      <span class="etiqueta">Hardware</span>
+      <h2>Características da plataforma</h2>
+    </div>
+
+    <div class="grade grade-2" style="align-items:start">
+      <div class="texto revelar">
+        <p>O Arduino Uno, modelo de referência da família, é construído em torno do microcontrolador ATmega328P, de arquitetura AVR RISC de 8 bits. A placa fornece regulação de tensão, conversor USB-serial, cristal oscilador e conectores padronizados, de modo que o projetista precise se preocupar apenas com o circuito da aplicação.</p>
+        <p>O grande diferencial da plataforma não está no desempenho do processador, modesto para os padrões atuais, mas na padronização dos conectores e na camada de abstração de software. Funções como <code>digitalRead()</code>, <code>analogRead()</code> e <code>attachInterrupt()</code> escondem a manipulação direta de registradores, permitindo que um circuito funcional seja construído em minutos.</p>
+        <p>Para aplicações com conectividade, a mesma estrutura de programação se aplica ao ESP32, que agrega Wi-Fi, Bluetooth, processador de 32 bits em dois núcleos e conversor analógico-digital de 12 bits, sendo a escolha natural quando o projeto exige publicação de dados em rede.</p>
+      </div>
+
+      <div class="tabela-rolagem tabela-rolagem--estreita revelar">
+        <table>
+          <thead><tr><th>Recurso</th><th>Arduino Uno</th><th>ESP32</th></tr></thead>
+          <tbody>
+            <tr><td>Microcontrolador</td><td>ATmega328P</td><td>Xtensa LX6 duplo núcleo</td></tr>
+            <tr><td>Arquitetura</td><td>8 bits</td><td>32 bits</td></tr>
+            <tr><td>Clock</td><td>16 MHz</td><td>240 MHz</td></tr>
+            <tr><td>Memória flash</td><td>32 kB</td><td>4 MB típico</td></tr>
+            <tr><td>SRAM</td><td>2 kB</td><td>520 kB</td></tr>
+            <tr><td>Entradas analógicas</td><td>6 canais de 10 bits</td><td>18 canais de 12 bits</td></tr>
+            <tr><td>Saídas PWM</td><td>Pinos 3, 5, 6, 9, 10 e 11 (~)</td><td>Praticamente todos os GPIO</td></tr>
+            <tr><td>Tensão lógica</td><td>5 V</td><td>3,3 V</td></tr>
+            <tr><td>Conectividade</td><td>Serial UART</td><td>Wi-Fi e Bluetooth</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FIRMWARE E BOAS PRÁTICAS ===== -->
+<section class="secao" id="firmware">
+  <div class="container">
+    <div class="secao-titulo revelar">
+      <span class="etiqueta">Firmware</span>
+      <h2>Modelo de execução e boas práticas</h2>
+    </div>
+
+    <div class="grade grade-3">
+      <div class="cartao revelar">
+        <h3>setup() e loop()</h3>
+        <p>A função <code>setup()</code> roda uma única vez após a energização ou o reset, e é onde se configuram os modos dos pinos, a taxa da porta serial, as interrupções e os periféricos. A função <code>loop()</code> executa continuamente, formando o ciclo de varredura equivalente ao <em>scan</em> de um CLP.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Leitura analógica</h3>
+        <p>A função <code>analogRead()</code> retorna um inteiro de 0 a 1023 no Uno. Alterar a referência de 5 V para a interna de 1,1 V com <code>analogReference(INTERNAL)</code> multiplica a resolução por cerca de 4,5 vezes em sensores de baixa tensão de saída, como o LM35.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Interrupções externas</h3>
+        <p>Sensores que geram pulsos rápidos, como encoders e medidores de vazão, devem ser lidos por interrupção com <code>attachInterrupt()</code>. A rotina de tratamento precisa ser curta, sem <code>delay()</code> nem <code>Serial.print()</code>, e as variáveis compartilhadas devem ser <code>volatile</code>.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Evitar delay bloqueante</h3>
+        <p>O uso de <code>delay()</code> congela todo o programa. Em aplicações com vários sensores, o temporizador deve ser implementado com <code>millis()</code>, comparando o instante atual com o marco anterior, o que mantém a responsividade das demais tarefas.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Filtragem de sinal</h3>
+        <p>Leituras analógicas em ambiente industrial carregam ruído elétrico. Média móvel, mediana de três amostras e filtro exponencial de primeira ordem são técnicas de baixo custo computacional que melhoram a estabilidade do valor apresentado.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Isolação elétrica</h3>
+        <p>Sensores industriais operam em 24 V e não podem ser ligados diretamente aos pinos do Arduino, limitados a 5 V. A interface deve ser feita por optoacoplador, divisor resistivo dimensionado ou módulo conversor de nível, sob pena de destruir o microcontrolador.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXEMPLOS DE PROGRAMAÇÃO (abas geradas por js/pagina-arduino.js) ===== -->
+<section class="secao" id="exemplos">
+  <div class="container">
+    <div class="secao-titulo revelar">
+      <span class="etiqueta">Programação</span>
+      <h2>Exemplos de programação por sensor</h2>
+      <p>Escolha um sensor para ver o código, o esquema de ligação e a biblioteca utilizada. Todos os exemplos podem ser compilados diretamente na IDE do Arduino.</p>
+    </div>
+
+    <div class="painel-abas revelar">
+      <div class="abas-navegacao" id="abas-exemplos" role="tablist" aria-label="Sensores"></div>
+      <div id="paineis-exemplos"></div>
+    </div>
+
+    <div class="aviso revelar" style="margin-top:28px">
+      <p><strong>Observação sobre níveis de tensão.</strong> Os exemplos que envolvem sensores industriais de 24 V, como o indutivo LJ12A3, pressupõem interface por optoacoplador ou divisor resistivo entre o sensor e a entrada digital do Arduino. Ligar 24 V diretamente a um pino do microcontrolador danifica a placa de forma permanente.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== RODAPÉ: cartão em degradê "Fale conosco" (igual ao modelo) ===== -->
+<footer class="rodape">
+  <div class="container">
+    <div class="rodape-cartao">
+      <a class="rodape-marca" href="../index.html"><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20 5 34 13 20 21 6 13Z" fill="#38b6ff"/><path d="M6 17.5 20 25.5 34 17.5V24L20 32 6 24Z" fill="#9340ff"/></svg><span>Jonas Corporation</span></a>
+      <div class="rodape-contato">
+        <h2>Fale conosco:</h2>
+        <p><a href="tel:+5547996698110">(47) 99669-8110</a></p>
+        <p>Rua Ronaldinho Pereira, 67, Distrito J</p>
+        <p><a href="mailto:JonasCorp@gmail.com.br">JonasCorp@gmail.com.br</a></p>
+        <div class="rodape-icones">
+          <a href="tel:+5547996698110" aria-label="Ligar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a>
+          <a href="mailto:JonasCorp@gmail.com.br" aria-label="Enviar e-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          <button type="button" class="voltar-topo" aria-label="Voltar ao topo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <p class="rodape-base">Curso Técnico em Desenvolvimento de Sistemas &middot; Internet das Coisas &middot; Docente José Ricardo Maçaneiro &middot; SENAI/SC &middot; <span data-ano>2026</span></p>
+  </div>
+</footer>
+
+<script src="../js/dados-arduino.js"></script>
+<script src="../js/nucleo.js"></script>
+<script src="../js/pagina-arduino.js"></script>
+</body>
+</html>

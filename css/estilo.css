@@ -1,0 +1,1034 @@
+/* ==========================================================================
+   estilo.css — estilos globais do portal Jonas Corporation
+   Baseado no modelo feito no Canva: fundo azul-marinho, formas orgânicas
+   ("blobs") em azul, ciano e roxo e degradê roxo → azul nos destaques.
+   Nenhuma biblioteca ou fonte externa é utilizada.
+   ========================================================================== */
+
+/* ---------- 1. Variáveis de cor, fonte e medidas ---------- */
+:root {
+  --fundo: #101728;          /* azul-marinho do modelo */
+  --fundo-escuro: #0a0f1c;   /* abas do menu e caixas internas */
+  --superficie: #161f36;     /* cartões */
+  --superficie-2: #1d2844;   /* cartões em destaque / hover */
+  --borda: rgba(255, 255, 255, 0.09);
+
+  --texto: #eef1f8;
+  --texto-suave: #a9b3c9;
+
+  --roxo: #9340ff;           /* cor principal do modelo */
+  --roxo-claro: #b48cff;     /* títulos roxos com bom contraste */
+  --roxo-escuro: #1a0e30;    /* legendas dos cartões em grade */
+  --azul: #38b6ff;
+  --ciano: #2bd2f6;
+  --azul-medio: #2b78cf;
+  --anil: #1800ad;           /* blob grande da página inicial */
+
+  --verde: #2fd38a;
+  --vermelho: #ff5c74;
+  --amarelo: #ffc94a;
+
+  --degrade: linear-gradient(90deg, #9340ff 0%, #38b6ff 100%);
+  --degrade-diagonal: linear-gradient(135deg, #9340ff 0%, #6b6cff 45%, #38b6ff 100%);
+
+  --raio: 18px;
+  --raio-grande: 26px;
+  --sombra: 0 22px 50px rgba(0, 0, 0, 0.38);
+  --largura: 1180px;
+
+  --fonte: "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "Cascadia Code", Consolas, "DejaVu Sans Mono", "Courier New", monospace;
+}
+
+/* ---------- 2. Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px; /* compensa o cabeçalho fixo ao navegar por âncoras */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte);
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden; /* os blobs decorativos não podem gerar rolagem lateral */
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--azul);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.15;
+  margin: 0 0 0.6em;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  background: rgba(147, 64, 255, 0.16);
+  color: #d9c6ff;
+  padding: 1px 6px;
+  border-radius: 6px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--azul);
+  outline-offset: 3px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.pular-conteudo {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 200;
+  background: var(--roxo);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.pular-conteudo:focus {
+  top: 12px;
+}
+
+/* ---------- 3. Cabeçalho e menu em abas (igual ao modelo) ---------- */
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background 0.25s, box-shadow 0.25s;
+}
+
+/* classe adicionada pelo JavaScript quando a página é rolada */
+.topo.rolado {
+  background: rgba(16, 23, 40, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+}
+
+.topo-interno {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 70px;
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--texto);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.marca svg {
+  width: 34px;
+  height: 34px;
+  flex: none;
+}
+
+/* Abas do menu: retângulos escuros "pendurados" no topo, como no Canva */
+.menu {
+  display: flex;
+  align-self: flex-start;
+  gap: 6px;
+}
+
+.menu a {
+  display: block;
+  padding: 24px 18px 14px;
+  background: var(--fundo-escuro);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-radius: 0 0 20px 20px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.menu a:hover {
+  background: var(--superficie-2);
+  transform: translateY(2px);
+}
+
+.menu a.ativo {
+  background: var(--degrade);
+}
+
+.botao-menu {
+  display: none;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--borda);
+  background: var(--fundo-escuro);
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 12px 11px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.botao-menu span {
+  display: block;
+  height: 3px;
+  border-radius: 3px;
+  background: #fff;
+  transition: transform 0.25s, opacity 0.25s;
+}
+
+.botao-menu[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+
+.botao-menu[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.botao-menu[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* ---------- 4. Botões ---------- */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--degrade);
+  color: #111;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+}
+
+.botao:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(147, 64, 255, 0.4);
+}
+
+.botao-contorno {
+  background: transparent;
+  color: var(--texto);
+  border: 2px solid rgba(180, 140, 255, 0.55);
+}
+
+.botao-contorno:hover {
+  background: rgba(147, 64, 255, 0.15);
+  box-shadow: none;
+}
+
+.botao[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.grupo-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+/* ---------- 5. Herói (topo de cada página) ---------- */
+.heroi {
+  position: relative;
+  padding: 40px 0 70px;
+}
+
+.heroi-grade {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: center;
+  gap: 60px;
+}
+
+/* nas páginas internas a imagem fica à esquerda, como na página 2 do modelo */
+.heroi--interno .heroi-grade {
+  grid-template-columns: 1fr 1.05fr;
+}
+
+.heroi--interno .heroi-figura {
+  order: -1;
+}
+
+.heroi h1 {
+  font-size: clamp(2.3rem, 5.2vw, 4.1rem);
+  font-weight: 700;
+  margin-bottom: 0.45em;
+}
+
+.heroi p.heroi-texto {
+  font-size: 1.08rem;
+  color: var(--texto-suave);
+  max-width: 560px;
+}
+
+.etiqueta {
+  display: inline-block;
+  padding: 6px 14px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(180, 140, 255, 0.4);
+  background: rgba(147, 64, 255, 0.12);
+  color: #d4bfff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ---------- 6. Imagens sobre "blobs" (formas orgânicas do modelo) ---------- */
+.figura-blob {
+  position: relative;
+  margin: 0;
+  padding: 7%;
+  isolation: isolate;
+}
+
+/* a forma colorida atrás da foto */
+.figura-blob::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--cor-blob, var(--azul));
+  border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+  transition: border-radius 1.2s ease;
+}
+
+.figura-blob:hover::before {
+  border-radius: 45% 55% 40% 60% / 60% 42% 58% 40%;
+}
+
+.figura-blob img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--raio-grande);
+  background: #e9edf5;
+  box-shadow: var(--sombra);
+}
+
+.figura-blob img.contem {
+  object-fit: contain;
+  background: #fff;
+}
+
+.figura-blob figcaption {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  text-align: center;
+}
+
+.figura-blob--azul { --cor-blob: var(--azul); }
+.figura-blob--ciano { --cor-blob: var(--ciano); }
+.figura-blob--medio { --cor-blob: var(--azul-medio); }
+.figura-blob--roxo { --cor-blob: var(--roxo); }
+
+.figura-blob--ciano::before {
+  border-radius: 42% 58% 37% 63% / 47% 60% 40% 53%;
+}
+
+.figura-blob--roxo::before {
+  border-radius: 55% 45% 62% 38% / 38% 52% 48% 62%;
+}
+
+/* brilho difuso do herói (o "glow" roxo/azul do modelo) */
+.figura-blob--brilho::after {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  z-index: -2;
+  background: radial-gradient(circle, rgba(147, 64, 255, 0.75), rgba(56, 182, 255, 0) 70%);
+  filter: blur(40px);
+}
+
+/* ---------- 7. Seções ---------- */
+.secao {
+  position: relative;
+  padding: 80px 0;
+}
+
+.secao--compacta {
+  padding: 50px 0;
+}
+
+.secao-titulo {
+  max-width: 780px;
+  margin-bottom: 40px;
+}
+
+.secao-titulo--centro {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.secao-titulo h2,
+.titulo-roxo {
+  color: var(--roxo-claro);
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  font-weight: 700;
+}
+
+.secao-titulo p {
+  color: var(--texto-suave);
+  font-size: 1.04rem;
+}
+
+/* Bloco central com o grande blob azul-anil (2ª dobra do modelo) */
+.bloco-blob {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 90px 9%;
+  text-align: center;
+  isolation: isolate;
+}
+
+.bloco-blob::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--anil);
+  border-radius: 58% 42% 55% 45% / 62% 48% 52% 38%;
+  box-shadow: 0 0 120px rgba(24, 0, 173, 0.55);
+}
+
+.bloco-blob h2 {
+  color: var(--roxo-claro);
+  font-size: clamp(1.6rem, 3.4vw, 2.5rem);
+}
+
+.bloco-blob p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.02rem;
+}
+
+/* Linhas alternadas texto + imagem (3ª, 4ª e 5ª dobras do modelo) */
+.linha {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 70px;
+  padding: 40px 0;
+}
+
+.linha-texto--centro {
+  text-align: center;
+}
+
+.linha-texto--centro .grupo-botoes {
+  justify-content: center;
+}
+
+.linha .figura-blob {
+  max-width: 420px;
+  width: 100%;
+  justify-self: center;
+}
+
+/* inverte a ordem: imagem à esquerda */
+.linha--invertida .figura-blob {
+  order: -1;
+}
+
+/* ---------- 8. Grades e cartões ---------- */
+.grade {
+  display: grid;
+  gap: 22px;
+}
+
+/* min-width: 0 impede que tabelas e códigos largos estourem a grade no celular */
+.grade > *,
+.linha > *,
+.heroi-grade > * {
+  min-width: 0;
+}
+
+.grade-2 { grid-template-columns: repeat(2, 1fr); }
+.grade-3 { grid-template-columns: repeat(3, 1fr); }
+.grade-4 { grid-template-columns: repeat(4, 1fr); }
+
+.cartao {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 26px;
+  transition: transform 0.25s, border-color 0.25s, background 0.25s;
+}
+
+.cartao:hover {
+  transform: translateY(-3px);
+  border-color: rgba(180, 140, 255, 0.35);
+  background: var(--superficie-2);
+}
+
+.cartao h3 {
+  font-size: 1.12rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* pequena barra em degradê antes do título do cartão */
+.cartao h3::before {
+  content: "";
+  flex: none;
+  width: 5px;
+  height: 20px;
+  border-radius: 4px;
+  background: var(--degrade);
+}
+
+.cartao p:last-child {
+  margin-bottom: 0;
+}
+
+.cartao p,
+.cartao li {
+  color: #cfd6e6;
+}
+
+/* cartão conceito: borda em degradê */
+.cartao-conceito {
+  position: relative;
+  padding: 24px;
+  border-radius: var(--raio);
+  background: linear-gradient(var(--superficie), var(--superficie)) padding-box,
+    var(--degrade) border-box;
+  border: 2px solid transparent;
+}
+
+.cartao-conceito h3 {
+  font-size: 1.08rem;
+  color: #fff;
+}
+
+.cartao-conceito p {
+  margin: 0;
+  color: #cfd6e6;
+  font-size: 0.95rem;
+}
+
+/* Grade de cartões com imagem + legenda ("Exemplos grid" do modelo) */
+.grade-vitrine {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 26px 24px;
+  isolation: isolate;
+}
+
+/* versão com cartões maiores (no máximo 3 por linha), usada nos robôs */
+.grade-vitrine--larga {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.cartao-img-figura img.cobrir {
+  object-fit: cover;
+}
+
+/* blob roxo atrás da grade, como na página 2 do modelo */
+.vitrine {
+  position: relative;
+  isolation: isolate;
+}
+
+.vitrine::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 8%;
+  right: 8%;
+  top: 4%;
+  bottom: 4%;
+  background: var(--roxo);
+  opacity: 0.9;
+  border-radius: 44% 56% 48% 52% / 40% 50% 50% 60%;
+  filter: blur(2px);
+}
+
+.cartao-img {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: var(--raio);
+  overflow: hidden;
+  background: var(--roxo-escuro);
+  color: var(--texto);
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.cartao-img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.45);
+}
+
+.cartao-img-figura {
+  display: block;
+  overflow: hidden;
+  background: #fff;
+}
+
+.cartao-img-figura img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain; /* mostra o produto inteiro, sem cortar */
+  background: #fff;
+  transition: transform 0.4s;
+}
+
+.cartao-img:hover .cartao-img-figura img {
+  transform: scale(1.05);
+}
+
+.cartao-img-legenda {
+  display: block;
+  padding: 12px 16px 14px;
+}
+
+.cartao-img-legenda strong {
+  display: block;
+  font-size: 0.98rem;
+}
+
+.cartao-img-legenda small {
+  display: block;
+  color: #bfaee6;
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+/* imagem que não carregou: mostra fundo neutro */
+img.sem-imagem {
+  opacity: 0.25;
+}
+
+/* ---------- 9. Números de destaque ---------- */
+.numeros {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.numero {
+  text-align: center;
+  padding: 26px 12px;
+  border-radius: var(--raio);
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+}
+
+.numero strong {
+  display: block;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  line-height: 1;
+  background: var(--degrade);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.numero span {
+  display: block;
+  margin-top: 8px;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+/* ---------- 10. Faixa de chamada (CTA) ---------- */
+.chamada {
+  position: relative;
+  overflow: hidden;
+  padding: 50px 40px;
+  border-radius: var(--raio-grande);
+  background: var(--degrade-diagonal);
+  color: #0c0f1a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.chamada h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  margin-bottom: 8px;
+}
+
+.chamada p {
+  margin: 0;
+  font-weight: 500;
+  max-width: 560px;
+}
+
+.chamada .botao {
+  background: var(--fundo);
+  color: #fff;
+  flex: none;
+}
+
+/* ---------- 11. Rodapé (cartão em degradê do modelo) ---------- */
+.rodape {
+  padding: 40px 0 30px;
+}
+
+.rodape-cartao {
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 16px;
+  border-radius: 22px;
+  background: var(--degrade-diagonal);
+  box-shadow: 0 20px 60px rgba(84, 70, 255, 0.25);
+}
+
+.rodape-marca {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto 18px;
+  padding: 10px 18px;
+  width: fit-content;
+  border-radius: 14px;
+  background: var(--fundo);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-decoration: none;
+}
+
+.rodape-marca svg {
+  width: 32px;
+  height: 32px;
+}
+
+.rodape-contato {
+  margin: 0 12px 4px;
+  padding: 22px 18px;
+  border-radius: 16px;
+  background: var(--fundo);
+  text-align: center;
+}
+
+.rodape-contato h2 {
+  font-size: 1.9rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.rodape-contato p {
+  margin: 0 0 4px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.rodape-contato a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.rodape-contato a:hover {
+  text-decoration: underline;
+}
+
+.rodape-icones {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.rodape-icones a,
+.rodape-icones button {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(147, 64, 255, 0.18);
+  color: var(--roxo-claro);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.rodape-icones a:hover,
+.rodape-icones button:hover {
+  background: var(--roxo);
+  color: #fff;
+}
+
+.rodape-icones svg {
+  width: 20px;
+  height: 20px;
+}
+
+.rodape-base {
+  margin-top: 26px;
+  text-align: center;
+  color: var(--texto-suave);
+  font-size: 0.82rem;
+}
+
+/* ---------- 12. Animação de entrada ao rolar ---------- */
+/* só esconde os elementos se o JavaScript estiver ativo (classe .js no <html>) */
+.js .revelar {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.js .revelar.visivel {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .js .revelar {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .figura-blob::before {
+    transition: none;
+  }
+}
+
+/* ---------- 13. Responsividade ---------- */
+@media (max-width: 1020px) {
+  .numeros {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grade-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .linha {
+    gap: 44px;
+  }
+}
+
+/* tablet e celular: menu vira um painel que abre pelo botão ☰ */
+@media (max-width: 900px) {
+  .botao-menu {
+    display: flex;
+  }
+
+  .menu {
+    position: absolute;
+    top: 100%;
+    left: 16px;
+    right: 16px;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    border-radius: 18px;
+    background: var(--fundo-escuro);
+    border: 1px solid var(--borda);
+    box-shadow: var(--sombra);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  }
+
+  .menu.aberto {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .menu a {
+    padding: 13px 16px;
+    border-radius: 12px;
+    background: transparent;
+    font-size: 1rem;
+  }
+
+  .menu a:hover {
+    transform: none;
+  }
+
+  .topo {
+    background: rgba(16, 23, 40, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .heroi-grade,
+  .heroi--interno .heroi-grade,
+  .linha {
+    grid-template-columns: 1fr;
+  }
+
+  .heroi--interno .heroi-figura,
+  .linha--invertida .figura-blob {
+    order: 0;
+  }
+
+  .heroi-figura {
+    max-width: 440px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .heroi {
+    text-align: center;
+  }
+
+  .heroi p.heroi-texto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .heroi .grupo-botoes {
+    justify-content: center;
+  }
+
+  .linha-texto {
+    text-align: center;
+  }
+
+  .linha-texto .grupo-botoes {
+    justify-content: center;
+  }
+
+  .grade-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .chamada {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .secao {
+    padding: 56px 0;
+  }
+
+  .grade-2,
+  .grade-3,
+  .grade-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .numeros {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* o 5º número ocupa a linha inteira para não ficar sozinho num canto */
+  .numero:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .bloco-blob {
+    padding: 70px 10%;
+  }
+
+  .bloco-blob::before {
+    border-radius: 38px;
+  }
+
+  .grade-vitrine,
+  .grade-vitrine--larga {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .cartao-img-legenda {
+    padding: 10px 12px 12px;
+  }
+
+  .chamada {
+    padding: 38px 22px;
+  }
+
+  .marca span {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .grade-vitrine,
+  .grade-vitrine--larga {
+    grid-template-columns: 1fr;
+  }
+}

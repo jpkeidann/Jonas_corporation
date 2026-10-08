@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robôs Industriais | Jonas Corporation</title>
+<meta name="description" content="As sete topologias de robôs industriais: conceito, funcionamento, características, aplicações, integração com IoT e modelos comerciais.">
+<meta name="theme-color" content="#101728">
+<link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/estilo.css">
+<link rel="stylesheet" href="../css/conteudo.css">
+<!-- marca que o JavaScript está ativo (usado nas animações de entrada) -->
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body data-pagina="robos" data-raiz="../">
+
+<a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- ===== CABEÇALHO: logotipo + menu em abas ===== -->
+<header class="topo">
+  <div class="container topo-interno">
+    <a class="marca" href="../index.html" aria-label="Jonas Corporation — página inicial"><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20 5 34 13 20 21 6 13Z" fill="#38b6ff"/><path d="M6 17.5 20 25.5 34 17.5V24L20 32 6 24Z" fill="#9340ff"/></svg><span>Jonas Corporation</span></a>
+    <button class="botao-menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span></button>
+    <nav class="menu" id="menu-principal" aria-label="Navegação principal">
+      <a href="../index.html" data-pagina="home">Home</a>
+      <a href="robos.html" data-pagina="robos">Robôs</a>
+      <a href="sensores.html" data-pagina="sensores">Sensores</a>
+      <a href="arduino.html" data-pagina="arduino">Arduino</a>
+      <a href="projetos.html" data-pagina="projetos">Projetos</a>
+      <a href="quiz.html" data-pagina="quiz">QUIZ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ===== HERÓI (imagem à esquerda, como na página 2 do modelo) ===== -->
+<section class="heroi heroi--interno">
+  <div class="container heroi-grade">
+    <div class="revelar">
+      <span class="etiqueta">Robótica Industrial &middot; Indústria 4.0</span>
+      <h1>Robôs Industriais</h1>
+      <p class="heroi-texto">Portal técnico e educativo com os principais modelos de robôs industriais usados em processos produtivos automatizados: características, funcionamento, aplicações e integração com a Internet das Coisas.</p>
+      <div class="grupo-botoes">
+        <a class="botao" href="#topologias">Ver as 7 topologias</a>
+        <a class="botao botao-contorno" href="#comparativo">Tabela comparativa</a>
+      </div>
+      <nav class="atalhos" aria-label="Partes desta página">
+        <a href="#iot">Internet das Coisas</a>
+        <a href="#robotica">Robótica industrial</a>
+        <a href="#automacao">Automação</a>
+        <a href="#robotica-iot">Robótica + IoT</a>
+        <a href="#topologias">Topologias</a>
+        <a href="#comparativo">Comparativo</a>
+      </nav>
+    </div>
+    <figure class="figura-blob figura-blob--azul figura-blob--brilho heroi-figura revelar">
+      <img src="../img/robos/articulado.jpg" alt="Braços robóticos articulados em linha de montagem automotiva">
+    </figure>
+  </div>
+</section>
+
+<!-- ===== CONCEITO DE IoT (blob central) ===== -->
+<section class="secao secao--compacta" id="iot">
+  <div class="container">
+    <div class="bloco-blob revelar">
+      <h2>O conceito de Internet das Coisas</h2>
+      <p>A Internet das Coisas designa a interconexão de objetos físicos dotados de capacidade de sensoriamento, processamento e comunicação, capazes de coletar e trocar dados entre si e com sistemas de informação, sem necessidade de intervenção humana em cada transação.</p>
+    </div>
+
+    <div class="texto revelar" style="margin: 50px auto 0">
+      <p>No contexto industrial, esse conceito recebe a denominação específica de IIoT, ou <em>Industrial Internet of Things</em>. A diferença em relação à IoT de consumo não é apenas de escala: aplicações industriais exigem determinismo temporal, disponibilidade elevada, tolerância a ambientes eletricamente ruidosos e requisitos rigorosos de segurança funcional, uma vez que a falha de um dispositivo pode interromper uma linha de produção ou colocar operadores em risco.</p>
+      <p>A arquitetura típica organiza-se em quatro camadas. A camada de <strong>percepção</strong> reúne sensores e atuadores em campo. A camada de <strong>rede</strong> transporta os dados por protocolos como Profinet, EtherNet/IP, Modbus TCP, MQTT e OPC UA. A camada de <strong>processamento</strong> divide-se entre a computação de borda, que executa análises críticas com baixa latência junto ao equipamento, e a nuvem, que consolida grandes volumes históricos. A camada de <strong>aplicação</strong> entrega o resultado em painéis, sistemas MES e ERP.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONCEITO DE ROBÓTICA INDUSTRIAL ===== -->
+<section class="secao" id="robotica">
+  <div class="container">
+    <div class="linha revelar">
+      <div class="linha-texto">
+        <h2 class="titulo-roxo">O conceito de Robótica Industrial</h2>
+        <div class="texto">
+          <p>Segundo a norma ISO 8373, um robô industrial é um manipulador multifuncional reprogramável, controlado automaticamente, programável em três ou mais eixos, que pode ser fixo no local ou móvel para uso em aplicações de automação industrial. Três elementos dessa definição merecem destaque: a <strong>reprogramabilidade</strong>, que distingue o robô de uma máquina dedicada; a <strong>multifuncionalidade</strong>, que permite trocar a ferramenta e a aplicação; e o número mínimo de eixos controlados.</p>
+          <p>O marco inicial ocorreu em 1961 com a introdução do <em>Unimate</em> na linha de produção da General Motors, um braço de configuração polar. Com os microprocessadores na década de 1970 e o avanço do controle cinemático, surgiram as estruturas Cartesianas, SCARA e os braços antropomórficos de seis eixos.</p>
+        </div>
+      </div>
+      <figure class="figura-blob figura-blob--ciano">
+        <img src="../img/robos/polar.jpg" alt="Braço robótico de configuração polar" loading="lazy">
+      </figure>
+    </div>
+
+    <div class="texto revelar" style="margin-top:10px">
+      <p>A transição para a Indústria 4.0 introduziu a hiperconectividade, a inteligência artificial distribuída na borda e, fundamentalmente, a quebra das barreiras físicas entre humanos e máquinas. Atualmente, na Indústria 5.0, o foco deixa de ser puramente a velocidade de ciclo para se concentrar na resiliência, na sustentabilidade e na colaboração direta e segura entre operadores e sistemas robóticos.</p>
+    </div>
+
+    <div class="grade grade-4" style="margin-top:30px">
+      <div class="cartao-conceito revelar">
+        <h3>Manipulador</h3>
+        <p>Estrutura mecânica composta por elos e juntas que sustenta e movimenta a ferramenta no espaço de trabalho.</p>
+      </div>
+      <div class="cartao-conceito revelar">
+        <h3>Controlador</h3>
+        <p>Unidade que resolve a cinemática, gera as trajetórias e comanda os servoacionamentos de cada eixo.</p>
+      </div>
+      <div class="cartao-conceito revelar">
+        <h3>Efetuador</h3>
+        <p>Ferramenta acoplada ao punho: garra, tocha de solda, pistola de pintura, ventosa ou parafusadeira.</p>
+      </div>
+      <div class="cartao-conceito revelar">
+        <h3>Sensoriamento</h3>
+        <p>Encoders, sensores de força, visão artificial e scanners que informam posição, contato e ambiente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IMPORTÂNCIA DA AUTOMAÇÃO ===== -->
+<section class="secao" id="automacao">
+  <div class="container">
+    <div class="secao-titulo revelar">
+      <span class="etiqueta">Automação</span>
+      <h2>A importância da automação industrial</h2>
+      <p>A automação deixou de ser um diferencial competitivo para se tornar condição de permanência em mercados globais, especialmente diante da redução do ciclo de vida dos produtos e da demanda por customização em massa.</p>
+    </div>
+
+    <div class="grade grade-3">
+      <div class="cartao revelar">
+        <h3>Produtividade e cadência</h3>
+        <p>Robôs operam em regime contínuo de três turnos, sem perda de ritmo por fadiga. Em operações de <em>pick-and-place</em>, um robô Delta ultrapassa 150 ciclos por minuto de forma sustentada, patamar inatingível manualmente.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Repetibilidade e qualidade</h3>
+        <p>A repetibilidade de décimos ou centésimos de milímetro elimina a variabilidade entre operadores e turnos, reduzindo refugo e retrabalho e viabilizando processos de tolerância estreita.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Segurança ocupacional</h3>
+        <p>A robotização remove o ser humano de tarefas classificadas como <em>dull, dirty and dangerous</em>: ambientes com calor radiante, vapores químicos, ruído elevado e movimentação de cargas pesadas.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Flexibilidade produtiva</h3>
+        <p>Diferente de máquinas dedicadas, o robô é reprogramável. A mesma célula pode produzir variantes distintas com troca de programa e de ferramenta, atendendo a cenários de alto mix e baixo volume.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Rastreabilidade</h3>
+        <p>Cada operação gera registro digital: torque de aperto, tempo de ciclo, resultado de inspeção. Esse histórico sustenta certificações de qualidade e investigação de falhas de campo.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Requalificação do trabalho</h3>
+        <p>A força de trabalho humana é promovida a tarefas cognitivas: julgamento crítico em tempo real, inteligência adaptativa perante imprevistos, destreza fina e customização do produto final.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RELAÇÃO ENTRE ROBÓTICA E IoT ===== -->
+<section class="secao" id="robotica-iot">
+  <div class="container">
+    <div class="secao-titulo revelar">
+      <span class="etiqueta">Convergência</span>
+      <h2>A relação entre robótica e Internet das Coisas</h2>
+      <p>O robô industrial moderno é simultaneamente um consumidor e um produtor de dados. É essa dupla natureza que o insere no ecossistema da Internet das Coisas.</p>
+    </div>
+
+    <div class="grade grade-2">
+      <div class="cartao revelar">
+        <h3>O robô como consumidor de dados</h3>
+        <p>Sensores externos alimentam a decisão do robô em tempo real. Câmeras de visão artificial informam a posição e a orientação de peças não paletizadas; encoders de esteira permitem o rastreamento de produtos em movimento; scanners a laser definem zonas dinâmicas de segurança; sensores de força no punho ajustam a pressão de montagem. Sem esses dados, o robô executa apenas trajetórias fixas pré-ensinadas.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>O robô como produtor de dados</h3>
+        <p>Cada eixo do robô publica posição, velocidade, corrente e torque em ciclos de poucos milissegundos. Interfaces como a KUKA RSI, o FANUC FIELD e o ABB Ability transmitem esses fluxos por Ethernet industrial, alimentando painéis de OEE, sistemas MES e modelos de manutenção preditiva.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Manutenção preditiva</h3>
+        <p>A evolução da assinatura de torque de uma junta revela o desgaste progressivo de redutores harmônicos e cicloidais muito antes da falha funcional. Algoritmos comparam a curva atual com a linha de base registrada na instalação e emitem ordem de serviço com semanas de antecedência.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Gêmeo digital</h3>
+        <p>A réplica virtual da célula robótica, alimentada continuamente pelos dados reais, permite simular novas trajetórias, validar tempos de ciclo e testar alterações de layout sem interromper a produção.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Protocolos de integração</h3>
+        <p>Profinet e EtherNet/IP garantem o determinismo necessário ao controle de movimento. OPC UA fornece semântica padronizada e independente de fabricante para integração vertical com MES e ERP. MQTT transporta telemetria agregada para a nuvem com baixo consumo de banda.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Coexistência simbiótica</h3>
+        <p>O futuro das fábricas inteligentes caminha para uma arquitetura híbrida: os robôs absorvem os esforços repetitivos e insalubres, enquanto o operador assume as decisões que exigem julgamento e adaptação, mediados por interfaces homem-máquina intuitivas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GRADE DAS 7 TOPOLOGIAS ("Exemplos grid" do modelo) ===== -->
+<section class="secao" id="topologias">
+  <div class="container">
+    <div class="secao-titulo secao-titulo--centro revelar">
+      <span class="etiqueta">Cadastro técnico</span>
+      <h2>As sete topologias de robôs</h2>
+      <p>Clique em um robô para ir direto à sua ficha técnica, com funcionamento, características, aplicações, integração com IoT e três modelos comerciais de fabricantes distintos.</p>
+    </div>
+    <div class="vitrine revelar">
+      <!-- preenchida pelo JavaScript (js/pagina-robos.js) -->
+      <div class="grade-vitrine grade-vitrine--larga" id="grade-robos"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FICHA DE CADA ROBÔ (gerada pelo JavaScript) ===== -->
+<section class="secao" style="padding-top:20px">
+  <div class="container" id="lista-robos"></div>
+</section>
+
+<!-- ===== TABELA COMPARATIVA E CONCLUSÃO ===== -->
+<section class="secao" id="comparativo">
+  <div class="container">
+    <div class="secao-titulo revelar">
+      <span class="etiqueta">Análise comparativa</span>
+      <h2>Tabela comparativa dos sistemas robóticos</h2>
+      <p>Comparação direta entre as sete topologias, considerando velocidade nominal, carga útil, precisão, custo relativo de aquisição e complexidade de implementação.</p>
+    </div>
+
+    <div class="tabela-rolagem revelar">
+      <table id="tabela-comparativa"></table>
+    </div>
+
+    <div class="secao-titulo revelar" style="margin-top:60px">
+      <span class="etiqueta">Conclusão</span>
+      <h2>O futuro da coexistência na Indústria 4.0 e 5.0</h2>
+    </div>
+
+    <div class="texto revelar">
+      <p>A análise comparativa das arquiteturas cinemáticas revela que não existe uma topologia robótica universalmente superior, mas sim soluções otimizadas para demandas de engenharia específicas. Enquanto sistemas Delta continuam insuperáveis em taxas de aceleração e braços articulados de grande porte dominam tarefas pesadas da indústria de base, a ascensão dos robôs colaborativos estabelece a base para o modelo de manufatura da Indústria 5.0.</p>
+      <p>O mercado global passa por uma transformação impulsionada pelo encurtamento do ciclo de vida dos produtos e pela demanda por customização em massa, fenômeno sintetizado pela sigla HMLV, de <em>High-Mix, Low-Volume</em>. A automação tradicional performa com excelência em produção invariável em larga escala; porém, quando as linhas precisam de trocas frequentes de ferramentas e reconfigurações semanais de leiaute, a automação rígida torna-se economicamente inviável.</p>
+      <p>O futuro das fábricas inteligentes não caminha para a automação total com exclusão da presença humana, mas para uma arquitetura híbrida de <strong>coexistência simbiótica</strong>. Os robôs absorvem os esforços repetitivos, insalubres e de alta repetibilidade, enquanto a força de trabalho humana é promovida a tarefas essencialmente cognitivas: julgamento crítico em tempo real, inteligência adaptativa perante imprevistos e customização do produto final.</p>
+    </div>
+
+    <div class="grade grade-3" style="margin-top:34px">
+      <div class="cartao-conceito revelar">
+        <h3>Automação rígida</h3>
+        <p>Alto volume, baixo mix de produtos, configuração fixa e células enclausuradas. Retorno sobre o investimento entre 24 e 36 meses.</p>
+      </div>
+      <div class="cartao-conceito revelar">
+        <h3>Automação flexível</h3>
+        <p>Alto mix de produtos, lotes customizados, integração segura com humanos e reprogramação rápida no chão de fábrica. Retorno entre 6 e 12 meses.</p>
+      </div>
+      <div class="cartao-conceito revelar">
+        <h3>Critério de escolha</h3>
+        <p>A topologia deve ser selecionada pela combinação de carga útil, alcance, cadência exigida, precisão necessária e grau de interação humana previsto na célula.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== RODAPÉ: cartão em degradê "Fale conosco" (igual ao modelo) ===== -->
+<footer class="rodape">
+  <div class="container">
+    <div class="rodape-cartao">
+      <a class="rodape-marca" href="../index.html"><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20 5 34 13 20 21 6 13Z" fill="#38b6ff"/><path d="M6 17.5 20 25.5 34 17.5V24L20 32 6 24Z" fill="#9340ff"/></svg><span>Jonas Corporation</span></a>
+      <div class="rodape-contato">
+        <h2>Fale conosco:</h2>
+        <p><a href="tel:+5547996698110">(47) 99669-8110</a></p>
+        <p>Rua Ronaldinho Pereira, 67, Distrito J</p>
+        <p><a href="mailto:JonasCorp@gmail.com.br">JonasCorp@gmail.com.br</a></p>
+        <div class="rodape-icones">
+          <a href="tel:+5547996698110" aria-label="Ligar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a>
+          <a href="mailto:JonasCorp@gmail.com.br" aria-label="Enviar e-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          <button type="button" class="voltar-topo" aria-label="Voltar ao topo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <p class="rodape-base">Curso Técnico em Desenvolvimento de Sistemas &middot; Internet das Coisas &middot; Docente José Ricardo Maçaneiro &middot; SENAI/SC &middot; <span data-ano>2026</span></p>
+  </div>
+</footer>
+
+<script src="../js/dados-robos.js"></script>
+<script src="../js/nucleo.js"></script>
+<script src="../js/pagina-robos.js"></script>
+</body>
+</html>

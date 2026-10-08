@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz Técnico | Jonas Corporation</title>
+<meta name="description" content="Quiz de 10 questões sobre robótica, sensores, eletrônica e programação, com correção comentada.">
+<meta name="theme-color" content="#101728">
+<link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/estilo.css">
+<link rel="stylesheet" href="../css/conteudo.css">
+<link rel="stylesheet" href="../css/quiz.css">
+<!-- marca que o JavaScript está ativo (usado nas animações de entrada) -->
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body data-pagina="quiz" data-raiz="../">
+
+<a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- ===== CABEÇALHO: logotipo + menu em abas ===== -->
+<header class="topo">
+  <div class="container topo-interno">
+    <a class="marca" href="../index.html" aria-label="Jonas Corporation — página inicial"><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20 5 34 13 20 21 6 13Z" fill="#38b6ff"/><path d="M6 17.5 20 25.5 34 17.5V24L20 32 6 24Z" fill="#9340ff"/></svg><span>Jonas Corporation</span></a>
+    <button class="botao-menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span></button>
+    <nav class="menu" id="menu-principal" aria-label="Navegação principal">
+      <a href="../index.html" data-pagina="home">Home</a>
+      <a href="robos.html" data-pagina="robos">Robôs</a>
+      <a href="sensores.html" data-pagina="sensores">Sensores</a>
+      <a href="arduino.html" data-pagina="arduino">Arduino</a>
+      <a href="projetos.html" data-pagina="projetos">Projetos</a>
+      <a href="quiz.html" data-pagina="quiz">QUIZ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ===== TOPO DO QUIZ ===== -->
+<section class="heroi quiz-heroi">
+  <div class="container">
+    <div class="revelar">
+      <span class="etiqueta">Quiz &middot; estilo SAEP / ENEM</span>
+      <h1>Quiz Técnico</h1>
+      <p class="heroi-texto">Tecnologia, Eletrônica e Programação: dez questões sobre robótica, sensores, Arduino e JavaScript. No final você vê quais acertou e errou, com a explicação de cada resposta.</p>
+    </div>
+  </div>
+</section>
+
+<section class="secao" style="padding-top:0">
+  <div class="container">
+    <div class="quiz" id="quiz">
+
+      <!-- ===== TELA 1: início ===== -->
+      <div class="quiz-tela quiz-inicio revelar" id="tela-inicio">
+        <div class="quiz-inicio-icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14"/><path d="M12 17.5h.01"/></svg>
+        </div>
+        <h2>Como funciona</h2>
+        <ul class="quiz-regras">
+          <li><strong>10 questões</strong> de múltipla escolha, com alternativas de A a D.</li>
+          <li>Responda no seu ritmo: não há tempo limite e dá para voltar às questões anteriores.</li>
+          <li>Ao finalizar, veja sua nota, <strong>quais questões acertou e errou</strong> e a explicação de cada uma.</li>
+          <li>Dica: use as teclas <kbd>A</kbd> a <kbd>D</kbd> para responder e <kbd>Enter</kbd> para avançar.</li>
+        </ul>
+        <button type="button" class="botao" id="botao-comecar">Começar o quiz</button>
+      </div>
+
+      <!-- ===== TELA 2: questões ===== -->
+      <div class="quiz-tela" id="tela-questao" hidden>
+        <div class="quiz-cabecalho">
+          <p class="quiz-contagem">Questão <strong id="numero-questao">1</strong> de <span id="total-questoes">10</span></p>
+          <span class="chip" id="tema-questao"></span>
+        </div>
+        <div class="quiz-progresso" role="progressbar" aria-label="Progresso do quiz" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0">
+          <span id="barra-progresso"></span>
+        </div>
+        <nav class="quiz-pontos" id="pontos-questoes" aria-label="Ir para a questão"></nav>
+
+        <article class="questao" id="questao" aria-live="polite"></article>
+
+        <div class="quiz-navegacao">
+          <button type="button" class="botao botao-contorno" id="botao-anterior">&larr; Anterior</button>
+          <button type="button" class="botao" id="botao-proxima" disabled>Próxima &rarr;</button>
+        </div>
+      </div>
+
+      <!-- ===== TELA 3: resultado e revisão ===== -->
+      <div class="quiz-tela" id="tela-resultado" hidden>
+        <div class="resultado">
+          <div class="resultado-anel">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <defs>
+                <linearGradient id="degrade-anel" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#9340ff"/>
+                  <stop offset="1" stop-color="#38b6ff"/>
+                </linearGradient>
+              </defs>
+              <circle cx="60" cy="60" r="52" class="anel-fundo"/>
+              <circle cx="60" cy="60" r="52" class="anel-valor" id="anel-valor"/>
+            </svg>
+            <div class="resultado-nota"><strong id="nota-acertos">0</strong><span>de <span id="nota-total">10</span></span></div>
+          </div>
+          <div class="resultado-texto">
+            <h2 id="resultado-titulo">Resultado</h2>
+            <p id="resultado-mensagem"></p>
+            <p class="resultado-resumo"><span class="selo selo-certo" id="resumo-acertos">0 acertos</span> <span class="selo selo-errado" id="resumo-erros">0 erros</span></p>
+            <div class="grupo-botoes">
+              <a class="botao" href="#revisao">Ver correção comentada</a>
+              <button type="button" class="botao botao-contorno" id="botao-refazer">Refazer o quiz</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="revisao" id="revisao">
+          <div class="revisao-topo">
+            <h2>Correção comentada</h2>
+            <div class="filtros" id="filtros-revisao" role="group" aria-label="Filtrar questões">
+              <button type="button" class="filtro ativo" data-filtro="todas" aria-pressed="true">Todas</button>
+              <button type="button" class="filtro" data-filtro="certas" aria-pressed="false">Acertei</button>
+              <button type="button" class="filtro" data-filtro="erradas" aria-pressed="false">Errei</button>
+            </div>
+          </div>
+          <nav class="quiz-pontos quiz-pontos--resultado" id="mapa-resultado" aria-label="Mapa de acertos e erros"></nav>
+          <div id="lista-revisao"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== RODAPÉ: cartão em degradê "Fale conosco" (igual ao modelo) ===== -->
+<footer class="rodape">
+  <div class="container">
+    <div class="rodape-cartao">
+      <a class="rodape-marca" href="../index.html"><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20 5 34 13 20 21 6 13Z" fill="#38b6ff"/><path d="M6 17.5 20 25.5 34 17.5V24L20 32 6 24Z" fill="#9340ff"/></svg><span>Jonas Corporation</span></a>
+      <div class="rodape-contato">
+        <h2>Fale conosco:</h2>
+        <p><a href="tel:+5547996698110">(47) 99669-8110</a></p>
+        <p>Rua Ronaldinho Pereira, 67, Distrito J</p>
+        <p><a href="mailto:JonasCorp@gmail.com.br">JonasCorp@gmail.com.br</a></p>
+        <div class="rodape-icones">
+          <a href="tel:+5547996698110" aria-label="Ligar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a>
+          <a href="mailto:JonasCorp@gmail.com.br" aria-label="Enviar e-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          <button type="button" class="voltar-topo" aria-label="Voltar ao topo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <p class="rodape-base">Curso Técnico em Desenvolvimento de Sistemas &middot; Internet das Coisas &middot; Docente José Ricardo Maçaneiro &middot; SENAI/SC &middot; <span data-ano>2026</span></p>
+  </div>
+</footer>
+
+<script src="../js/dados-quiz.js"></script>
+<script src="../js/nucleo.js"></script>
+<script src="../js/quiz.js"></script>
+</body>
+</html>

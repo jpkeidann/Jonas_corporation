@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sensores IoT e Industriais | Jonas Corporation</title>
+<meta name="description" content="Sensoriamento, protocolos de comunicação e catálogo técnico com 25 sensores IoT e industriais.">
+<meta name="theme-color" content="#101728">
+<link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/estilo.css">
+<link rel="stylesheet" href="../css/conteudo.css">
+<!-- marca que o JavaScript está ativo (usado nas animações de entrada) -->
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body data-pagina="sensores" data-raiz="../">
+
+<a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- ===== CABEÇALHO: logotipo + menu em abas ===== -->
+<header class="topo">
+  <div class="container topo-interno">
+    <a class="marca" href="../index.html" aria-label="Jonas Corporation — página inicial"><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20 5 34 13 20 21 6 13Z" fill="#38b6ff"/><path d="M6 17.5 20 25.5 34 17.5V24L20 32 6 24Z" fill="#9340ff"/></svg><span>Jonas Corporation</span></a>
+    <button class="botao-menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span></button>
+    <nav class="menu" id="menu-principal" aria-label="Navegação principal">
+      <a href="../index.html" data-pagina="home">Home</a>
+      <a href="robos.html" data-pagina="robos">Robôs</a>
+      <a href="sensores.html" data-pagina="sensores">Sensores</a>
+      <a href="arduino.html" data-pagina="arduino">Arduino</a>
+      <a href="projetos.html" data-pagina="projetos">Projetos</a>
+      <a href="quiz.html" data-pagina="quiz">QUIZ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ===== HERÓI ===== -->
+<section class="heroi heroi--interno">
+  <div class="container heroi-grade">
+    <div class="revelar">
+      <span class="etiqueta">Sensoriamento &middot; IoT e Automação</span>
+      <h1>Sensores IoT e Industriais</h1>
+      <p class="heroi-texto">Catálogo técnico digital para ajudar estudantes, clientes e profissionais a escolher sensores para projetos de Internet das Coisas e Automação Industrial com Arduino, ESP32, Raspberry Pi e CLPs.</p>
+      <div class="grupo-botoes">
+        <a class="botao" href="#catalogo">Ver os 25 sensores</a>
+        <a class="botao botao-contorno" href="arduino.html">Exemplos de programação</a>
+      </div>
+      <nav class="atalhos" aria-label="Partes desta página">
+        <a href="#sensoriamento">Sensoriamento</a>
+        <a href="#importancia">Importância</a>
+        <a href="#comunicacao">Comunicação e controle</a>
+        <a href="#plataforma">Arduino</a>
+        <a href="#catalogo">Catálogo</a>
+      </nav>
+    </div>
+    <figure class="figura-blob figura-blob--azul figura-blob--brilho heroi-figura revelar">
+      <img class="contem" src="../img/sensores/dht22.jpg" alt="Sensor de temperatura e umidade DHT22">
+    </figure>
+  </div>
+</section>
+
+<!-- ===== CONCEITO DE SENSORIAMENTO ===== -->
+<section class="secao secao--compacta" id="sensoriamento">
+  <div class="container">
+    <div class="bloco-blob revelar">
+      <h2>O conceito de sensoriamento</h2>
+      <p>Sensoriamento é o processo de converter uma grandeza física ou química do mundo real em um sinal elétrico interpretável por um sistema de controle. O elemento responsável por essa conversão é o transdutor, e o conjunto formado pelo transdutor mais o circuito de condicionamento de sinal constitui o que chamamos de sensor.</p>
+    </div>
+
+    <div class="texto revelar" style="margin: 50px auto 0">
+      <p>Toda grandeza de interesse em um processo produtivo &mdash; temperatura, pressão, nível, vazão, posição, presença, corrente elétrica, vibração, luminosidade &mdash; precisa ser traduzida para o domínio elétrico antes de poder ser monitorada, registrada ou usada em uma malha de controle. Sem sensoriamento não existe automação: um sistema que não consegue perceber o estado do processo só pode executar sequências cegas e pré-programadas.</p>
+      <p>Os sensores classificam-se conforme a natureza do sinal que entregam. Sensores <strong>analógicos</strong> produzem um sinal contínuo proporcional à grandeza medida, como o LM35, que gera 10 mV por grau Celsius. Sensores <strong>digitais</strong> entregam informação já discretizada, seja como nível lógico simples, como no sensor indutivo de proximidade, seja por protocolo serial estruturado, como o DS18B20 no barramento 1-Wire. Essa distinção determina o tipo de entrada necessária no controlador e a estratégia de tratamento do dado no firmware.</p>
+    </div>
+
+    <div class="grade grade-3" style="margin-top:34px">
+      <div class="cartao-conceito revelar">
+        <h3>Transdutor</h3>
+        <p>Elemento físico que converte a grandeza medida em uma variação elétrica: resistência, capacitância, tensão ou corrente. É a fronteira entre o mundo físico e o mundo elétrico.</p>
+      </div>
+      <div class="cartao-conceito revelar">
+        <h3>Condicionamento</h3>
+        <p>Circuito que amplifica, filtra, lineariza e adapta a impedância do sinal bruto, tornando-o compatível com a faixa de entrada do conversor analógico-digital do controlador.</p>
+      </div>
+      <div class="cartao-conceito revelar">
+        <h3>Aquisição</h3>
+        <p>Etapa em que o microcontrolador ou CLP digitaliza o sinal condicionado, aplica a escala de engenharia e disponibiliza o valor para a lógica de controle e para a rede de dados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IMPORTÂNCIA DOS SENSORES ===== -->
+<section class="secao" id="importancia">
+  <div class="container">
+    <div class="secao-titulo revelar">
+      <span class="etiqueta">Automação industrial</span>
+      <h2>A importância dos sensores na automação</h2>
+      <p>Os sensores são a camada perceptiva da planta: é por meio deles que qualquer estratégia de controle, segurança, qualidade ou manutenção se torna tecnicamente possível.</p>
+    </div>
+
+    <div class="grade grade-3">
+      <div class="cartao revelar">
+        <h3>Controle de malha fechada</h3>
+        <p>Sem realimentação não existe controle. Um controlador PID só consegue corrigir o erro entre o valor desejado e o valor real porque um sensor informa continuamente a variável de processo. A qualidade do controle nunca supera a qualidade da medição.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Segurança de máquinas e pessoas</h3>
+        <p>Cortinas de luz, scanners a laser, chaves de posição e sensores de força constituem a base técnica das funções de segurança. Eles detectam a presença humana em zonas de risco e comandam paradas categorizadas conforme a IEC 60204-1.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Qualidade e rastreabilidade</h3>
+        <p>Sensores de peso, dimensional, torque e visão verificam cada unidade produzida. Associados à identificação por RFID, permitem reconstruir todo o histórico de fabricação de um lote a partir do número de série do produto.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Manutenção preditiva</h3>
+        <p>Sensores de vibração, corrente e temperatura monitoram a assinatura de funcionamento dos equipamentos. Desvios em relação à linha de base indicam desgaste em rolamentos, desbalanceamento ou falha de isolação antes que a quebra ocorra.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Eficiência energética</h3>
+        <p>Medição de corrente, tensão, vazão e luminosidade permite quantificar o consumo por setor e por máquina, identificar cargas ociosas e dimensionar ações concretas de redução de custo operacional.</p>
+      </div>
+      <div class="cartao revelar">
+        <h3>Flexibilidade produtiva</h3>
+        <p>Em cenários de alto mix e baixo volume, sensores de identificação e de presença permitem que a mesma linha reconheça automaticamente o produto em processamento e carregue a receita correspondente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SENSORES + COMUNICAÇÃO + CONTROLE ===== -->
+<section class="secao" id="comunicacao">
+  <div class="container">
+    <div class="secao-titulo revelar">
+      <span class="etiqueta">Arquitetura</span>
+      <h2>Relação entre sensores, comunicação de dados e controle de processos</h2>
+      <p>O dado gerado por um sensor percorre uma cadeia bem definida até se transformar em decisão operacional. Compreender essa cadeia é o que diferencia um projeto de automação de uma simples leitura isolada.</p>
+    </div>
+
+    <div class="fluxo revelar">
+      <div class="fluxo-etapa">
+        <span class="fluxo-numero">1</span>
+        <strong>Sensor</strong>
+        <span>Converte a grandeza física em sinal elétrico analógico ou digital</span>
+      </div>
+      <div class="fluxo-etapa">
+        <span class="fluxo-numero">2</span>
+        <strong>Aquisição</strong>
+        <span>Arduino, ESP32, Raspberry Pi ou CLP digitaliza e escalona o sinal</span>
+      </div>
+      <div class="fluxo-etapa">
+        <span class="fluxo-numero">3</span>
+        <strong>Comunicação</strong>
+        <span>Modbus, Profinet, MQTT, OPC UA ou LoRaWAN transportam o dado</span>
+      </div>
+      <div class="fluxo-etapa">
+        <span class="fluxo-numero">4</span>
+        <strong>Processamento</strong>
+        <span>Supervisório, borda ou nuvem analisam, registram e correlacionam</span>
+      </div>
+      <div class="fluxo-etapa">
+        <span class="fluxo-numero">5</span>
+        <strong>Atuação</strong>
+        <span>A decisão retorna ao processo por relés, inversores e válvulas</span>
+      </div>
+    </div>
+
+    <div class="texto revelar">
+      <h3>Protocolos de comunicação mais empregados</h3>
+      <p>A escolha do protocolo depende da distância, do volume de dados, da criticidade temporal e da infraestrutura já existente na planta.</p>
+    </div>
+
+    <div class="tabela-rolagem revelar">
+      <table>
+        <thead>
+          <tr><th>Protocolo</th><th>Camada</th><th>Característica principal</th><th>Aplicação típica</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>I2C</strong></td><td>Barramento local</td><td>Dois fios, até 128 dispositivos endereçáveis, curtas distâncias</td><td>Sensores em placa: BH1750, BMP280, acelerômetros</td></tr>
+          <tr><td><strong>SPI</strong></td><td>Barramento local</td><td>Full-duplex de alta velocidade, um sinal de seleção por dispositivo</td><td>Leitores RFID, cartões SD, conversores de alta taxa</td></tr>
+          <tr><td><strong>UART</strong></td><td>Serial ponto a ponto</td><td>Assíncrono, dois fios, simples de depurar</td><td>Módulos GPS, GSM e sensores com saída serial</td></tr>
+          <tr><td><strong>1-Wire</strong></td><td>Barramento local</td><td>Um único fio de dados, endereço único de 64 bits por dispositivo</td><td>Redes de DS18B20 em medição distribuída de temperatura</td></tr>
+          <tr><td><strong>4 a 20 mA</strong></td><td>Campo analógico</td><td>Imune à queda de tensão no cabo, detecta rompimento de fio</td><td>Transmissores industriais de pressão, nível e temperatura</td></tr>
+          <tr><td><strong>Modbus RTU / TCP</strong></td><td>Rede industrial</td><td>Padrão aberto, simples, amplamente suportado</td><td>Integração de inversores, medidores e CLPs</td></tr>
+          <tr><td><strong>Profinet / EtherNet/IP</strong></td><td>Ethernet industrial</td><td>Determinismo temporal, diagnóstico integrado</td><td>Células robóticas e linhas de produção de alta cadência</td></tr>
+          <tr><td><strong>MQTT</strong></td><td>Aplicação IoT</td><td>Publicação e assinatura, leve, tolerante a conexão instável</td><td>Telemetria de sensores para nuvem e painéis remotos</td></tr>
+          <tr><td><strong>OPC UA</strong></td><td>Aplicação industrial</td><td>Semântica padronizada, segurança nativa, independente de fabricante</td><td>Integração entre chão de fábrica, MES e ERP</td></tr>
+          <tr><td><strong>LoRaWAN</strong></td><td>Rede de longo alcance</td><td>Quilômetros de alcance com consumo muito baixo</td><td>Sensores autônomos em áreas externas e agricultura</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ARDUINO (resumo — página completa na aba Arduino) ===== -->
+<section class="secao" id="plataforma">
+  <div class="container">
+    <div class="linha linha--invertida revelar">
+      <div class="linha-texto">
+        <h2 class="titulo-roxo">Arduino: conceito, funcionamento e programação</h2>
+        <div class="texto">
+          <p><strong>Conceito.</strong> O Arduino é uma plataforma aberta de prototipagem eletrônica composta por uma placa com microcontrolador, um ambiente de desenvolvimento integrado e um conjunto de bibliotecas que abstraem o acesso ao hardware.</p>
+          <p><strong>Funcionamento.</strong> Todo programa possui duas funções obrigatórias: <code>setup()</code>, executada uma única vez na energização para configurar pinos e periféricos, e <code>loop()</code>, repetida indefinidamente, onde fica a lógica de leitura e atuação.</p>
+          <p><strong>Programação.</strong> O código é escrito em uma variante simplificada de C++ e compilado pelo GCC AVR. O binário é gravado na memória flash por meio de um bootloader já presente na placa, dispensando gravador externo.</p>
+        </div>
+        <div class="grupo-botoes"><a class="botao" href="arduino.html">Ver a página completa do Arduino</a></div>
+      </div>
+      <figure class="figura-blob figura-blob--roxo">
+        <img class="contem" src="../img/sensores/arduino-uno.jpg" alt="Placa Arduino Uno" loading="lazy">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CATÁLOGO DE SENSORES (busca + filtros + grade + ficha em janela) ===== -->
+<section class="secao" id="catalogo">
+  <div class="container">
+    <div class="secao-titulo secao-titulo--centro revelar">
+      <span class="etiqueta">Cadastro técnico</span>
+      <h2>Cadastro dos sensores</h2>
+      <p>Clique em um sensor para abrir a ficha técnica completa: categoria, conceito, princípio de funcionamento, especificações, tipo de sinal, aplicações, exemplo de projeto, imagem e fabricantes.</p>
+    </div>
+
+    <div class="barra-ferramentas">
+      <div class="campo-busca">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" id="busca-sensores" placeholder="Buscar por nome, categoria ou tipo de sinal" aria-label="Buscar sensor">
+      </div>
+      <div class="filtros" id="filtros-sensores" role="group" aria-label="Filtrar por categoria"></div>
+    </div>
+
+    <p class="contador" id="contador-sensores" aria-live="polite"></p>
+
+    <div class="vitrine">
+      <div class="grade-vitrine" id="grade-sensores"></div>
+    </div>
+  </div>
+</section>
+
+<!-- janela da ficha técnica (preenchida pelo JavaScript) -->
+<div class="modal" id="modal-sensor" role="dialog" aria-modal="true" aria-label="Ficha técnica do sensor"></div>
+
+</main>
+
+<!-- ===== RODAPÉ: cartão em degradê "Fale conosco" (igual ao modelo) ===== -->
+<footer class="rodape">
+  <div class="container">
+    <div class="rodape-cartao">
+      <a class="rodape-marca" href="../index.html"><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20 5 34 13 20 21 6 13Z" fill="#38b6ff"/><path d="M6 17.5 20 25.5 34 17.5V24L20 32 6 24Z" fill="#9340ff"/></svg><span>Jonas Corporation</span></a>
+      <div class="rodape-contato">
+        <h2>Fale conosco:</h2>
+        <p><a href="tel:+5547996698110">(47) 99669-8110</a></p>
+        <p>Rua Ronaldinho Pereira, 67, Distrito J</p>
+        <p><a href="mailto:JonasCorp@gmail.com.br">JonasCorp@gmail.com.br</a></p>
+        <div class="rodape-icones">
+          <a href="tel:+5547996698110" aria-label="Ligar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a>
+          <a href="mailto:JonasCorp@gmail.com.br" aria-label="Enviar e-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          <button type="button" class="voltar-topo" aria-label="Voltar ao topo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <p class="rodape-base">Curso Técnico em Desenvolvimento de Sistemas &middot; Internet das Coisas &middot; Docente José Ricardo Maçaneiro &middot; SENAI/SC &middot; <span data-ano>2026</span></p>
+  </div>
+</footer>
+
+<script src="../js/dados-sensores.js"></script>
+<script src="../js/nucleo.js"></script>
+<script src="../js/pagina-sensores.js"></script>
+</body>
+</html>

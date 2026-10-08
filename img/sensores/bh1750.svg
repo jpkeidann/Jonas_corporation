@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" role="img" aria-label="BH1750">
+<rect width="640" height="420" fill="#eef2f7"/>
+<rect x="0" y="0" width="640" height="420" fill="none" stroke="#dbe2ea" stroke-width="2"/>
+<g>
+<rect x="150" y="110" width="340" height="200" rx="10" fill="#4a3a8c"/>
+<rect x="150" y="110" width="340" height="200" rx="10" fill="none" stroke="#6b57b8" stroke-width="3"/>
+<circle cx="172" cy="132" r="7" fill="#0f2540" opacity="0.55"/>
+<circle cx="468" cy="132" r="7" fill="#0f2540" opacity="0.55"/>
+<circle cx="172" cy="288" r="7" fill="#0f2540" opacity="0.55"/>
+<circle cx="468" cy="288" r="7" fill="#0f2540" opacity="0.55"/>
+
+<rect x="290" y="170" width="60" height="60" rx="6" fill="#12203a"/>
+<circle cx="320" cy="200" r="18" fill="#ffe9a8"/>
+<circle cx="320" cy="200" r="9" fill="#f5c542"/>
+<g stroke="#ffe9a8" stroke-width="3" stroke-linecap="round">
+<line x1="320" y1="150" x2="320" y2="164"/><line x1="320" y1="236" x2="320" y2="250"/>
+<line x1="270" y1="200" x2="284" y2="200"/><line x1="356" y1="200" x2="370" y2="200"/>
+<line x1="285" y1="165" x2="295" y2="175"/><line x1="345" y1="225" x2="355" y2="235"/>
+<line x1="355" y1="165" x2="345" y2="175"/><line x1="295" y1="225" x2="285" y2="235"/>
+</g>
+<rect x="262.7" y="310" width="8" height="26" rx="2" fill="#d9b64a"/><rect x="289.3" y="310" width="8" height="26" rx="2" fill="#d9b64a"/><rect x="316.0" y="310" width="8" height="26" rx="2" fill="#d9b64a"/><rect x="342.7" y="310" width="8" height="26" rx="2" fill="#d9b64a"/><rect x="369.3" y="310" width="8" height="26" rx="2" fill="#d9b64a"/>
+</g>
+<text x="320" y="358" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" fill="#1a2230" text-anchor="middle">BH1750</text>
+<text x="320" y="384" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#5a6675" text-anchor="middle">Luminosimetro digital I2C</text>
+<text x="320" y="72" font-family="Segoe UI, Arial, sans-serif" font-size="14" letter-spacing="2" fill="#8c98a8" text-anchor="middle">ILUSTRACAO ESQUEMATICA</text>
+</svg>

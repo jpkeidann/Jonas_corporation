@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" role="img" aria-label="FC-37">
+<rect width="640" height="420" fill="#eef2f7"/>
+<rect x="0" y="0" width="640" height="420" fill="none" stroke="#dbe2ea" stroke-width="2"/>
+<g>
+<rect x="150" y="110" width="340" height="200" rx="10" fill="#3a4450"/>
+<rect x="150" y="110" width="340" height="200" rx="10" fill="none" stroke="#59677a" stroke-width="3"/>
+<circle cx="172" cy="132" r="7" fill="#0f2540" opacity="0.55"/>
+<circle cx="468" cy="132" r="7" fill="#0f2540" opacity="0.55"/>
+<circle cx="172" cy="288" r="7" fill="#0f2540" opacity="0.55"/>
+<circle cx="468" cy="288" r="7" fill="#0f2540" opacity="0.55"/>
+
+<rect x="255" y="150" width="130" height="100" rx="6" fill="#1a2a3f"/>
+<g stroke="#d9b64a" stroke-width="3">
+<line x1="268" y1="162" x2="268" y2="238"/><line x1="288" y1="162" x2="288" y2="238"/>
+<line x1="308" y1="162" x2="308" y2="238"/><line x1="328" y1="162" x2="328" y2="238"/>
+<line x1="348" y1="162" x2="348" y2="238"/><line x1="368" y1="162" x2="368" y2="238"/>
+</g>
+<g fill="#5aa9e6">
+<ellipse cx="290" cy="185" rx="7" ry="10"/><ellipse cx="335" cy="210" rx="6" ry="9"/><ellipse cx="310" cy="230" rx="5" ry="8"/>
+</g>
+<rect x="268.0" y="310" width="8" height="26" rx="2" fill="#d9b64a"/><rect x="300.0" y="310" width="8" height="26" rx="2" fill="#d9b64a"/><rect x="332.0" y="310" width="8" height="26" rx="2" fill="#d9b64a"/><rect x="364.0" y="310" width="8" height="26" rx="2" fill="#d9b64a"/>
+</g>
+<text x="320" y="358" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" fill="#1a2230" text-anchor="middle">FC-37</text>
+<text x="320" y="384" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#5a6675" text-anchor="middle">Placa detectora de chuva</text>
+<text x="320" y="72" font-family="Segoe UI, Arial, sans-serif" font-size="14" letter-spacing="2" fill="#8c98a8" text-anchor="middle">ILUSTRACAO ESQUEMATICA</text>
+</svg>

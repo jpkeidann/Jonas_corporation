@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" role="img" aria-label="Celula de Carga + HX711">
+<rect width="640" height="420" fill="#eef2f7"/>
+<rect x="0" y="0" width="640" height="420" fill="none" stroke="#dbe2ea" stroke-width="2"/>
+<g>
+<rect x="150" y="110" width="340" height="200" rx="10" fill="#3a4450"/>
+<rect x="150" y="110" width="340" height="200" rx="10" fill="none" stroke="#59677a" stroke-width="3"/>
+<circle cx="172" cy="132" r="7" fill="#0f2540" opacity="0.55"/>
+<circle cx="468" cy="132" r="7" fill="#0f2540" opacity="0.55"/>
+<circle cx="172" cy="288" r="7" fill="#0f2540" opacity="0.55"/>
+<circle cx="468" cy="288" r="7" fill="#0f2540" opacity="0.55"/>
+
+<rect x="180" y="180" width="180" height="42" rx="8" fill="#9aa4b0"/>
+<rect x="180" y="180" width="180" height="42" rx="8" fill="none" stroke="#6f7a88" stroke-width="3"/>
+<circle cx="215" cy="201" r="9" fill="#3a4450"/>
+<circle cx="325" cy="201" r="9" fill="#3a4450"/>
+<rect x="250" y="192" width="40" height="18" rx="3" fill="#c1441f"/>
+<rect x="385" y="160" width="105" height="82" rx="6" fill="#12203a"/>
+<text x="437" y="207" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="700" fill="#8fb9d3" text-anchor="middle">HX711</text>
+<line x1="360" y1="201" x2="385" y2="201" stroke="#d9b64a" stroke-width="4"/>
+<rect x="268.0" y="310" width="8" height="26" rx="2" fill="#d9b64a"/><rect x="300.0" y="310" width="8" height="26" rx="2" fill="#d9b64a"/><rect x="332.0" y="310" width="8" height="26" rx="2" fill="#d9b64a"/><rect x="364.0" y="310" width="8" height="26" rx="2" fill="#d9b64a"/>
+</g>
+<text x="320" y="358" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" fill="#1a2230" text-anchor="middle">Celula de Carga + HX711</text>
+<text x="320" y="384" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#5a6675" text-anchor="middle">Amplificador ADC 24 bits para extensometros</text>
+<text x="320" y="72" font-family="Segoe UI, Arial, sans-serif" font-size="14" letter-spacing="2" fill="#8c98a8" text-anchor="middle">ILUSTRACAO ESQUEMATICA</text>
+</svg>

@@ -1,0 +1,946 @@
+/* ==========================================================================
+   conteudo.css — componentes das páginas de conteúdo
+   (Robôs, Sensores, Arduino e Projetos): textos, tabelas, código, abas,
+   fichas técnicas, catálogo com busca/filtros e janela modal.
+   ========================================================================== */
+
+/* ---------- 1. Navegação interna (atalhos para as partes da página) ---------- */
+.atalhos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.atalhos a {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+  color: var(--texto);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.atalhos a:hover {
+  background: rgba(147, 64, 255, 0.2);
+  border-color: rgba(180, 140, 255, 0.5);
+}
+
+@media (max-width: 900px) {
+  .atalhos {
+    justify-content: center;
+  }
+}
+
+/* ---------- 2. Blocos de texto corrido ---------- */
+.texto {
+  max-width: 860px;
+  font-size: 1.03rem;
+  color: #d5dbea;
+}
+
+.texto strong {
+  color: #fff;
+}
+
+.texto h3 {
+  color: #fff;
+  font-size: 1.25rem;
+  margin-top: 1.4em;
+}
+
+/* ---------- 3. Fluxo sensor → atuação ---------- */
+.fluxo {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  margin: 10px 0 40px;
+  counter-reset: etapa;
+}
+
+.fluxo-etapa {
+  position: relative;
+  padding: 22px 18px;
+  border-radius: var(--raio);
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+}
+
+/* seta entre as etapas */
+.fluxo-etapa:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -12px;
+  width: 10px;
+  height: 10px;
+  border-top: 3px solid var(--azul);
+  border-right: 3px solid var(--azul);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.fluxo-numero {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  background: var(--degrade);
+  color: #111;
+  font-weight: 800;
+}
+
+.fluxo-etapa strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.fluxo-etapa span:last-child {
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .fluxo {
+    grid-template-columns: 1fr;
+  }
+
+  .fluxo-etapa:not(:last-child)::after {
+    top: auto;
+    bottom: -12px;
+    right: 50%;
+    transform: translateX(50%) rotate(135deg);
+  }
+}
+
+/* ---------- 4. Tabelas ---------- */
+.tabela-rolagem {
+  overflow-x: auto;
+  border-radius: var(--raio);
+  border: 1px solid var(--borda);
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  font-size: 0.94rem;
+}
+
+.tabela-rolagem--estreita table {
+  min-width: 0;
+}
+
+th,
+td {
+  padding: 13px 16px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--borda);
+}
+
+th {
+  background: #1f1440;
+  color: #e4d6ff;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+tbody tr:hover {
+  background: rgba(147, 64, 255, 0.09);
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ---------- 5. Aviso / observação ---------- */
+.aviso {
+  margin-top: 18px;
+  padding: 16px 20px;
+  border-left: 4px solid var(--azul);
+  border-radius: 0 12px 12px 0;
+  background: rgba(56, 182, 255, 0.08);
+  color: #d5dbea;
+  font-size: 0.95rem;
+}
+
+.aviso strong,
+.aviso b {
+  color: #9fdcff;
+}
+
+.aviso p:last-child {
+  margin: 0;
+}
+
+/* ---------- 6. Blocos de código ---------- */
+.codigo-envolucro {
+  margin: 14px 0 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #2a3557;
+  background: #090d18;
+}
+
+.codigo-barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  background: #121a30;
+  color: #c9d3ee;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
+
+/* três "bolinhas" decorativas de janela de editor */
+.codigo-barra span::before {
+  content: "● ● ●  ";
+  color: #9340ff;
+  letter-spacing: 1px;
+}
+
+.botao-copiar {
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: #e6ecff;
+  font: 700 0.78rem var(--fonte);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.botao-copiar:hover {
+  background: var(--roxo);
+  border-color: var(--roxo);
+}
+
+.codigo-envolucro pre {
+  margin: 0;
+  padding: 18px 20px;
+  overflow-x: auto;
+  max-height: 560px;
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: #dbe4ff;
+  tab-size: 2;
+}
+
+.codigo-envolucro pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ---------- 7. Abas (exemplos de código e projetos) ---------- */
+.abas-navegacao {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.aba {
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+  color: var(--texto);
+  font: 600 0.88rem var(--fonte);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.aba:hover {
+  border-color: rgba(180, 140, 255, 0.5);
+}
+
+.aba.ativa {
+  background: var(--degrade);
+  color: #111;
+  border-color: transparent;
+}
+
+.aba-painel {
+  display: none;
+}
+
+.aba-painel.ativo {
+  display: block;
+  animation: surgir 0.35s ease;
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* abas grandes dos projetos */
+.abas-navegacao--grandes .aba {
+  padding: 14px 22px;
+  font-size: 1rem;
+  border-radius: 16px;
+}
+
+.exemplo-cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.exemplo-cabecalho h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.exemplo-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 16px 0 4px;
+}
+
+.exemplo-meta div {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  font-size: 0.9rem;
+}
+
+.exemplo-meta span {
+  display: block;
+  color: var(--roxo-claro);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 760px) {
+  .exemplo-meta {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- 8. Etiquetas pequenas ---------- */
+.chip,
+.tag-sinal {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(56, 182, 255, 0.13);
+  color: #a8e0ff;
+  border: 1px solid rgba(56, 182, 255, 0.3);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.linha-texto--centro .chips,
+.linha-texto .chips {
+  justify-content: inherit;
+}
+
+@media (max-width: 900px) {
+  .chips {
+    justify-content: center;
+  }
+}
+
+/* ---------- 9. Seções dos robôs ---------- */
+.robo {
+  padding: 30px 0 40px;
+  border-bottom: 1px solid var(--borda);
+}
+
+.robo:last-child {
+  border-bottom: 0;
+}
+
+.robo .linha {
+  padding: 10px 0;
+}
+
+.robo h3.titulo-roxo {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.robo-conceito {
+  color: #d5dbea;
+}
+
+.ficha-robo {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.ficha-robo[hidden] {
+  display: none;
+}
+
+.ficha-robo .cartao--largo {
+  grid-column: 1 / -1;
+}
+
+.ficha-robo ul,
+.ficha-sensor ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.ficha-robo li,
+.ficha-sensor li {
+  margin-bottom: 6px;
+}
+
+.modelos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.modelo {
+  padding: 16px;
+  border-radius: 14px;
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+}
+
+.modelo strong {
+  display: block;
+  color: #fff;
+}
+
+.modelo em {
+  display: block;
+  font-style: normal;
+  color: var(--azul);
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin-bottom: 6px;
+}
+
+.modelo span {
+  color: var(--texto-suave);
+  font-size: 0.88rem;
+}
+
+.lista-modos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.lista-modos div {
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  font-size: 0.9rem;
+}
+
+.lista-modos strong {
+  display: block;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.lista-modos span {
+  color: var(--texto-suave);
+}
+
+.fontes li {
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+}
+
+@media (max-width: 900px) {
+  .ficha-robo,
+  .modelos,
+  .lista-modos {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- 10. Catálogo de sensores: busca e filtros ---------- */
+.barra-ferramentas {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.campo-busca {
+  position: relative;
+  max-width: 520px;
+}
+
+.campo-busca svg {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+  color: var(--texto-suave);
+  pointer-events: none;
+}
+
+.campo-busca input {
+  width: 100%;
+  padding: 14px 18px 14px 46px;
+  border-radius: 999px;
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+  color: var(--texto);
+  font: 1rem var(--fonte);
+}
+
+.campo-busca input::placeholder {
+  color: #7f89a3;
+}
+
+.campo-busca input:focus {
+  outline: none;
+  border-color: var(--roxo);
+  box-shadow: 0 0 0 4px rgba(147, 64, 255, 0.2);
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filtro {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+  color: var(--texto-suave);
+  font: 600 0.82rem var(--fonte);
+  cursor: pointer;
+}
+
+.filtro:hover {
+  color: #fff;
+}
+
+.filtro.ativo {
+  background: var(--degrade);
+  color: #111;
+  border-color: transparent;
+}
+
+.contador {
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+  margin-bottom: 22px;
+}
+
+.vazio {
+  grid-column: 1 / -1;
+  padding: 40px;
+  border-radius: var(--raio);
+  background: var(--superficie);
+  text-align: center;
+  color: var(--texto-suave);
+}
+
+/* ---------- 11. Janela modal (ficha técnica do sensor) ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(4, 7, 15, 0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.modal.aberto {
+  display: flex;
+  animation: surgir 0.25s ease;
+}
+
+.modal-caixa {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: 92vh;
+  overflow-y: auto;
+  border-radius: var(--raio-grande);
+  background: var(--fundo);
+  border: 1px solid rgba(180, 140, 255, 0.3);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+.modal-cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px 26px 18px;
+  background: var(--fundo);
+  border-bottom: 1px solid var(--borda);
+}
+
+.modal-cabecalho h2 {
+  margin: 4px 0 0;
+  font-size: 1.7rem;
+  color: var(--roxo-claro);
+}
+
+.modal-categoria {
+  color: var(--azul);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.modal-fechar {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-fechar:hover {
+  background: var(--roxo);
+}
+
+.modal-corpo {
+  padding: 24px 26px 30px;
+}
+
+.ficha-sensor {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+}
+
+.ficha-sensor-imagem img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  border-radius: var(--raio);
+  background: #fff;
+}
+
+.ficha-dados {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.ficha-dados div {
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--superficie);
+  font-size: 0.9rem;
+}
+
+.ficha-dados span {
+  display: block;
+  color: var(--roxo-claro);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.bloco {
+  margin-bottom: 20px;
+}
+
+.bloco h4 {
+  color: #fff;
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+}
+
+.bloco p,
+.bloco li {
+  color: #cfd6e6;
+  font-size: 0.95rem;
+}
+
+.fabricantes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fabricantes span {
+  padding: 7px 12px;
+  border-radius: 10px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 760px) {
+  .ficha-sensor {
+    grid-template-columns: 1fr;
+  }
+
+  .ficha-sensor-imagem {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .modal {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .modal-caixa {
+    max-height: 94vh;
+    border-radius: 22px 22px 0 0;
+  }
+
+  .modal-cabecalho,
+  .modal-corpo {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+/* ---------- 12. Projetos de automação ---------- */
+.lista-componentes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.lista-componentes li {
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: rgba(147, 64, 255, 0.14);
+  border: 1px solid rgba(180, 140, 255, 0.3);
+  color: #e4d6ff;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.pilula {
+  display: inline-block;
+  padding: 3px 11px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #0c0f1a;
+}
+
+.p-ligado,
+.p-verde { background: var(--verde); }
+.p-desligado { background: #7d879c; }
+.p-pisca { background: #ff9d4a; }
+.p-vermelho { background: var(--vermelho); }
+.p-amarelo { background: var(--amarelo); }
+
+.projeto-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.projeto-meta div {
+  padding: 9px 14px;
+  border-radius: 12px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  font-size: 0.88rem;
+}
+
+.projeto-meta b {
+  display: block;
+  color: var(--roxo-claro);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 900px) {
+  .projeto-meta {
+    justify-content: center;
+  }
+}
+
+.video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--raio);
+  overflow: hidden;
+  background: #000;
+  border: 1px solid var(--borda);
+}
+
+.video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* espaço reservado para o print do circuito do Tinkercad */
+.circuito-reserva {
+  padding: 46px 22px;
+  border: 2px dashed rgba(180, 140, 255, 0.35);
+  border-radius: var(--raio);
+  text-align: center;
+  color: var(--texto-suave);
+}
+
+.circuito-reserva strong {
+  display: block;
+  color: var(--roxo-claro);
+  margin-bottom: 6px;
+}
+
+.circuito img {
+  width: 100%;
+  border-radius: var(--raio);
+  background: #fff;
+}
+
+.projeto-bloco {
+  margin-top: 22px;
+}
+
+.titulo-projeto {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+.titulo-projeto .numero-projeto {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--degrade);
+  color: #111;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.titulo-projeto h2 {
+  margin: 0;
+  color: var(--roxo-claro);
+  font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+}
+
+.legenda-projeto {
+  color: var(--texto-suave);
+  margin: 0 0 24px;
+}
+
+.topo-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ---------- 13. Vídeos do Arduino físico (sala de aula) ---------- */
+.cartao-video {
+  margin: 0;
+  padding: 14px;
+  border-radius: var(--raio);
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  transition: transform 0.25s, border-color 0.25s;
+}
+
+.cartao-video:hover {
+  transform: translateY(-3px);
+  border-color: rgba(180, 140, 255, 0.35);
+}
+
+.cartao-video .video {
+  border-radius: 12px;
+}
+
+.cartao-video figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 4px 2px;
+  font-size: 0.92rem;
+}
+
+.cartao-video figcaption a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cartao-video figcaption a:hover {
+  text-decoration: underline;
+}
+
+/* no tablet (2 colunas), o terceiro vídeo fica centralizado na linha de baixo */
+@media (max-width: 900px) and (min-width: 641px) {
+  .grade-videos .cartao-video:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 11px);
+  }
+}
