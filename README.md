@@ -46,7 +46,3 @@ ou fonte externa**.
     ├── sensores/         imagens dos sensores
     └── circuitos/        prints do Tinkercad: circuito1.png, circuito2.png, circuito3.png
 ```
-
-## Como abrir
-
-Abra o `index.html` no navegador ou publique a pasta no Vercel (sem build: é um site estático).
